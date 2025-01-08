@@ -1,0 +1,8 @@
+prefix=/home/kauvoy/TrackRace/devel
+
+Name: ransac
+Description: Description of ransac
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

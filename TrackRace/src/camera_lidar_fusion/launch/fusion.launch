@@ -1,0 +1,26 @@
+<launch>
+    <!-- Fusion Node-->
+    <node name="fusion_node" pkg="camera_lidar_fusion" type="fusion_node" output="screen"/>
+
+    <!-- Velodyne Lidar Node -->
+    <include file="/home/kauvoy/catkin_ws/src/velodyne/velodyne_pointcloud/launch/VLP16_points.launch" output="screen"/>
+    
+    <!-- Voxel Node -->
+    <node pkg="voxel" type="voxel_node" name="voxel_node" output="screen"/>
+    
+    <!-- ROI Node -->
+    <node pkg="roi" type="roi_node" name="roi_node" output="screen"/>
+    
+    <!-- RANSAC Node -->
+    <node pkg="ransac" type="ransac_node" name="ransac_node" output="screen"/>
+    
+    <!-- USB Camera Node -->
+    <include file="/home/kauvoy/catkin_ws/src/usb_cam/launch/multicam.launch" output="screen"/>
+    
+    <!-- YOLO Node -->
+    <include file="/home/kauvoy/catkin_ws/src/yolov9_ros/ros/launch/detect.launch" output="screen"/>
+    
+    <!-- Rviz Node -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d camera_lidar_fusion/rviz/config.rviz"/>
+  
+</launch>    
