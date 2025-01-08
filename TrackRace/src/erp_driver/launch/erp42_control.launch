@@ -1,7 +1,0 @@
-<launch>
-    <node name="erp_control" pkg="erp_driver" type="control_steer.py" output="screen">
-        <param name="/port" value="/dev/ttyERP" type="str"/> <!--바꾸지말고 권한부여하세요.-->
-        <param name="/baudrate" value="115200" type="int" />
-    </node>
-    
-</launch>

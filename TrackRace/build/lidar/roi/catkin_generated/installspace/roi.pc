@@ -1,8 +1,0 @@
-prefix=/home/kauvoy/TrackRace/install
-
-Name: roi
-Description: Description of roi
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

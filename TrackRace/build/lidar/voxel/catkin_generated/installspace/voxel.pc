@@ -1,8 +1,0 @@
-prefix=/home/kauvoy/TrackRace/install
-
-Name: voxel
-Description: Description of voxel
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
