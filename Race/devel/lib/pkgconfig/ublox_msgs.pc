@@ -1,0 +1,8 @@
+prefix=/home/kauvoy/Race/devel
+
+Name: ublox_msgs
+Description: Description of ublox_msgs
+Version: 1.1.2
+Cflags: -I/home/kauvoy/Race/devel/include -I/home/kauvoy/Race/src/ublox_f9p/ublox_msgs/include
+Libs: -L${prefix}/lib -lublox_msgs
+Requires: message_runtime ublox_serialization std_msgs sensor_msgs

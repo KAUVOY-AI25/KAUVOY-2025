@@ -1,0 +1,31 @@
+#!/bin/bash
+
+--------------- [터미널에서 기본 세팅] -------------------------
+# Set port permissions
+port
+
+# Run ERP base launch, ERP control launch
+erp
+control
+
+# Launch USB camera, LIDAR, GPS, utmk
+cam
+lidar
+gps
+utmk
+
+-------------[bash파일로 바로 실행] -----------------------
+/home/kauvoy/Race/src/mode.sh
+/home/kauvoy/Race/src/mission.sh  #중간에 유턴,장애물 미션 다시 시작해야하면 이것만 다시 켜세요
+
+-------------[vs code에서 따로 실행] -----------------------
+/home/kauvoy/Race/src/lane_detection/race_kcity.py
+
+rostopic pub /mode_topic std_msgs/Int32 "data: 6"
+rostopic pub /uturn_flag std_msgs/Int32 "data: 0"
+
+rostopic pub /utm_k_coordinates geometry_msgs/Point "x: 935709.4041781367
+y: 1915796.3687378326
+z: 0.0"
+
+

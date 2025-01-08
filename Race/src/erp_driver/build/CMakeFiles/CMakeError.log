@@ -1,0 +1,232 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e96ca/fast && /usr/bin/make -f CMakeFiles/cmTC_e96ca.dir/build.make CMakeFiles/cmTC_e96ca.dir/build
+make[1]: Entering directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e96ca.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_e96ca.dir/src.c.o   -c /home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_e96ca
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e96ca.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_e96ca.dir/src.c.o  -o cmTC_e96ca 
+/usr/bin/ld: CMakeFiles/cmTC_e96ca.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_e96ca.dir/build.make:87: cmTC_e96ca] Error 1
+make[1]: Leaving directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_e96ca/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8b058/fast && /usr/bin/make -f CMakeFiles/cmTC_8b058.dir/build.make CMakeFiles/cmTC_8b058.dir/build
+make[1]: Entering directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8b058.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_8b058.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_8b058
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8b058.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_8b058.dir/CheckFunctionExists.c.o  -o cmTC_8b058  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_8b058.dir/build.make:87: cmTC_8b058] Error 1
+make[1]: Leaving directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_8b058/fast] Error 2
+
+
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a5928/fast && /usr/bin/make -f CMakeFiles/cmTC_a5928.dir/build.make CMakeFiles/cmTC_a5928.dir/build
+make[1]: Entering directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a5928.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_a5928.dir/src.c.o   -c /home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_a5928
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a5928.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_a5928.dir/src.c.o  -o cmTC_a5928 
+/usr/bin/ld: CMakeFiles/cmTC_a5928.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_a5928.dir/build.make:87: cmTC_a5928] Error 1
+make[1]: Leaving directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_a5928/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_720e8/fast && /usr/bin/make -f CMakeFiles/cmTC_720e8.dir/build.make CMakeFiles/cmTC_720e8.dir/build
+make[1]: Entering directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_720e8.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_720e8.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_720e8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_720e8.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_720e8.dir/CheckFunctionExists.c.o  -o cmTC_720e8  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_720e8.dir/build.make:87: cmTC_720e8] Error 1
+make[1]: Leaving directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_720e8/fast] Error 2
+
+
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_82015/fast && /usr/bin/make -f CMakeFiles/cmTC_82015.dir/build.make CMakeFiles/cmTC_82015.dir/build
+make[1]: Entering directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_82015.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_82015.dir/src.c.o   -c /home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_82015
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_82015.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_82015.dir/src.c.o  -o cmTC_82015 
+/usr/bin/ld: CMakeFiles/cmTC_82015.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_82015.dir/build.make:87: cmTC_82015] Error 1
+make[1]: Leaving directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_82015/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_553d3/fast && /usr/bin/make -f CMakeFiles/cmTC_553d3.dir/build.make CMakeFiles/cmTC_553d3.dir/build
+make[1]: Entering directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_553d3.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_553d3.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_553d3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_553d3.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_553d3.dir/CheckFunctionExists.c.o  -o cmTC_553d3  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_553d3.dir/build.make:87: cmTC_553d3] Error 1
+make[1]: Leaving directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_553d3/fast] Error 2
+
+
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_66dfc/fast && /usr/bin/make -f CMakeFiles/cmTC_66dfc.dir/build.make CMakeFiles/cmTC_66dfc.dir/build
+make[1]: Entering directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_66dfc.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_66dfc.dir/src.c.o   -c /home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_66dfc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_66dfc.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_66dfc.dir/src.c.o  -o cmTC_66dfc 
+/usr/bin/ld: CMakeFiles/cmTC_66dfc.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_66dfc.dir/build.make:87: cmTC_66dfc] Error 1
+make[1]: Leaving directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_66dfc/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f3541/fast && /usr/bin/make -f CMakeFiles/cmTC_f3541.dir/build.make CMakeFiles/cmTC_f3541.dir/build
+make[1]: Entering directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f3541.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_f3541.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f3541
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f3541.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_f3541.dir/CheckFunctionExists.c.o  -o cmTC_f3541  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_f3541.dir/build.make:87: cmTC_f3541] Error 1
+make[1]: Leaving directory '/home/kauvoy/catkin_ws/src/erp_driver/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_f3541/fast] Error 2
+
+
+

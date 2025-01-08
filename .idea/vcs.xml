@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/Race/src/erp_driver" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Race/src/ublox_f9p" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Race/src/ublox_f9p/ntrip_ros" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Race/src/ublox_f9p/rtcm_msgs" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Race/src/usb_cam" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Race/src/velodyne" vcs="Git" />
+  </component>
+</project>

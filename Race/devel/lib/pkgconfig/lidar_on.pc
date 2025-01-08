@@ -1,0 +1,8 @@
+prefix=/home/kauvoy/Race/devel
+
+Name: lidar_on
+Description: Description of lidar_on
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
