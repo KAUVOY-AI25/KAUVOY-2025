@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d2f3a452-0d3f-4257-9c34-24308d9d01c0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Race/src/ublox_f9p/ntrip_ros/launch/ntrip_ros.launch" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/ublox_f9p/ntrip_ros/launch/ntrip_ros.launch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/ublox_f9p/ntrip_ros/scripts/ntripclient.py" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/ublox_f9p/ntrip_ros/scripts/ntripclient.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/ublox_f9p/ublox_gps/launch/ublox_device.launch" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/ublox_f9p/ublox_gps/launch/ublox_device.launch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/ublox_f9p/ublox_gps/src/gps.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/ublox_f9p/ublox_gps/src/gps.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/ublox_f9p/ublox_gps/src/node.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/ublox_f9p/ublox_gps/src/node.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/usb_cam/launch/usb_cam-test.launch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/velodyne/velodyne_driver/cfg/VelodyneNode.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/velodyne/velodyne_driver/cfg/VelodyneNode.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/velodyne/velodyne_driver/src/vdump" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/velodyne/velodyne_driver/src/vdump" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/velodyne/velodyne_laserscan/cfg/VelodyneLaserScan.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/velodyne/velodyne_laserscan/cfg/VelodyneLaserScan.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/cfg/TransformNode.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/cfg/TransformNode.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/launch/32e_points.launch" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/launch/32e_points.launch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/launch/64e_S3.launch" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/launch/64e_S3.launch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/launch/VLP-32C_points.launch" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/launch/VLP-32C_points.launch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/launch/VLP16_points.launch" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/launch/VLP16_points.launch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/launch/laserscan_nodelet.launch" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/launch/laserscan_nodelet.launch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/launch/transform_nodelet.launch" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/launch/transform_nodelet.launch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/scripts/add_two_pt.py" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/scripts/add_two_pt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/scripts/gen_calibration.py" beforeDir="false" afterPath="$PROJECT_DIR$/Race/src/velodyne/velodyne_pointcloud/scripts/gen_calibration.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Race/src/erp_driver" />
+  </component>
+  <component name="ProjectId" id="2qSWacBIdX5I8Il49IjYM3VooE1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d2f3a452-0d3f-4257-9c34-24308d9d01c0" name="Default Changelist" comment="" />
+      <created>1734656520885</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1734656520885</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -1,0 +1,2 @@
+camera_lidar_fusion:erp_driver:lidar/dbscan:lidar/outlier:lidar/ransac:lidar/roi:lidar/voxel:usb_cam:velodyne/velodyne:velodyne/velodyne_driver:velodyne/velodyne_laserscan:velodyne/velodyne_msgs:velodyne/velodyne_pcl:velodyne/velodyne_pointcloud:yolov9_ros/ros
+-DCATKIN_DEVEL_PREFIX=/home/kauvoy/TrackRace/devel -DCMAKE_INSTALL_PREFIX=/home/kauvoy/TrackRace/install -G Unix Makefiles

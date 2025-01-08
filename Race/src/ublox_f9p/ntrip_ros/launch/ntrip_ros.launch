@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <include file="$(find ublox_gps)/launch/ublox_device.launch"/>
+  <node pkg="ntrip_ros" type="ntripclient.py" name="ntrip_ros" output="screen">
+    <param name="rtcm_topic" value="/ublox_gps/rtcm"/>
+    <param name="ntrip_server" value="gnss.eseoul.go.kr:2101"/>
+    <param name="ntrip_user" value="seoul"/>
+    <param name="ntrip_pass" value="seoul"/>
+    <param name="ntrip_stream" value="GANS-RTCM23"/>
+    <param name="nmea_gga" value="$GPGGA,123823.190,3736.085,N,23308.117,W,1,12,1.0,0.0,M,0.0,M,,*7C"/> 
+  </node>
+</launch> 
+

@@ -1,0 +1,8 @@
+prefix=/home/kauvoy/TrackRace/devel
+
+Name: roi
+Description: Description of roi
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

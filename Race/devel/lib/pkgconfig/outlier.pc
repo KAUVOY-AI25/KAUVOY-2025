@@ -1,0 +1,8 @@
+prefix=/home/kauvoy/Race/devel
+
+Name: outlier
+Description: Description of outlier
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,19 @@
+<launch>
+    <!-- Velodyne Lidar Node -->
+    <include file="/home/kauvoy/Race/src/velodyne/velodyne_pointcloud/launch/VLP16_points.launch" output="screen"/>
+    
+    <!-- Voxel Node -->
+    <node pkg="voxel" type="voxel_node" name="voxel_node" output="screen"/>
+    
+    <!-- ROI Node -->
+    <node pkg="roi" type="roi_node" name="roi_node" output="screen"/>
+
+    
+    <!-- RANSAC Node -->
+    <node pkg="ransac" type="ransac_node" name="ransac_node" output="screen"/>
+    
+    <!-- DBSCAN Node -->
+    <node pkg="dbscan" type="dbscan_node" name="dbscan_node" output="screen"/>
+
+    
+</launch>    
