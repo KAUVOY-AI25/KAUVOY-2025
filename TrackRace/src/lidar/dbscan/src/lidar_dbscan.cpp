@@ -1,5 +1,8 @@
 /*----------------------------------------------------*/
 /*----------------------------------------------------*/
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
 /* 아래 코드는 윤수빈이 장애물 회피를 위해 작성한 코드임_240902 */
 /*----------------------------------------------------*/
 /*----------------------------------------------------*/
@@ -31,21 +34,33 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
 {
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
     pcl::fromROSMsg(*cloud_msg, *cloud);
+    
+    // 입력 데이터가 비었는지 확인 - 민환
+    if (cloud->points.empty()) {
+        ROS_WARN("DBSCAN received an empty point cloud. Skipping.");
+        return;
+    }
 
     // ROI 필터 적용
     pcl::PassThrough<pcl::PointXYZ> pass;
     pass.setInputCloud(cloud);
     pass.setFilterFieldName("x");
-    pass.setFilterLimits(-5.0, 10.0); // 앞뒤 거리 제한
+    pass.setFilterLimits(0.0, 20.0); // 앞뒤 거리 제한
     pass.filter(*cloud);
 
     pass.setFilterFieldName("y");
-    pass.setFilterLimits(-5.0, 5.0); // 좌우 거리 제한
+    pass.setFilterLimits(-2.0, 2.0); // 좌우 거리 제한
     pass.filter(*cloud);
 
     pass.setFilterFieldName("z");
-    pass.setFilterLimits(-1.0, 1.0); // 상하 거리 제한
+    pass.setFilterLimits(-0.5, 2.0); // 상하 거리 제한
     pass.filter(*cloud);
+    
+    // 필터링 후 데이터가 비었는지 확인 - 민환 추가
+    if (cloud->points.empty()) {
+        ROS_WARN("Point cloud is empty after filtering. Skipping DBSCAN.");
+        return;
+    }
 
     arma::mat data(3, cloud->points.size());
     for (size_t i = 0; i < cloud->points.size(); ++i)
@@ -62,6 +77,12 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
 
     arma::Row<size_t> assignments;
     dbscan.Cluster(data, assignments);
+    
+    // DBSCAN 결과 확인 - 민환
+    if (assignments.n_elem == 0 || arma::max(assignments) == size_t(-1)) {
+        ROS_WARN("No clusters found by DBSCAN. Skipping visualization.");
+        return;
+    }
 
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr result_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
     std::map<size_t, pcl::PointCloud<pcl::PointXYZ>::Ptr> clusters;
@@ -89,8 +110,7 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
         double depth = max_pt.y - min_pt.y;
         double height = max_pt.z - min_pt.z;
 
-        //if (width <= 0.5 && depth <= 0.5 && height >= 0.2 && height <= 1.0)
-        if (width <= 3.0 && depth <= 4.0 && height >= 0.1 && height <= 1.2)
+        if (width <= 0.5 && depth <= 0.5 && height >= 0.2 && height <= 1.0)
         {
             // 네 가지 점 계산
             points_array.data.clear();
@@ -170,12 +190,14 @@ int main(int argc, char** argv)
     ros::Subscriber sub = nh.subscribe("lidar_ransac", 1, cloud_cb);
     pub = nh.advertise<sensor_msgs::PointCloud2>("lidar_dbscan", 1);
     marker_pub = nh.advertise<visualization_msgs::MarkerArray>("visualization_marker_array", 1);
-    obstacle_pub = nh.advertise<std_msgs::Float32MultiArray>("obstacle_data", 1);
+    obstacle_pub = nh.advertise<std_msgs::Float32MultiArray>("obstacles", 1);
     point_pub = nh.advertise<std_msgs::Float32MultiArray>("obstacle_info", 1);
-
+    
     std::cout << "dbscan complete" << std::endl;
 
     ros::spin();
 
     return 0;
 }
+
+

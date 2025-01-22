@@ -1,3 +1,15 @@
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+/*------------민환 outlier 코드 수정_250103 -----------*/
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+/*----------------------------------------------------*/
+
 #include <ros/ros.h>
 #include <iostream>
 #include <cmath>
@@ -12,7 +24,6 @@
 #include <armadillo>
 
 #include <pcl_ros/point_cloud.h>
-#include <pcl/point_types.h>
 #include <pcl_conversions/pcl_conversions.h>
 #include <pcl/common/common.h>
 #include <pcl/common/centroid.h>
@@ -27,62 +38,69 @@
 #include <pcl/sample_consensus/model_types.h>
 #include <pcl/segmentation/sac_segmentation.h>
 #include <pcl/filters/extract_indices.h>
-#include <pcl/filters/statistical_outlier_removal.h>
-#include <pcl/filters/radius_outlier_removal.h>
 #include <pcl/features/normal_3d.h>
 #include <pcl/segmentation/extract_clusters.h>
+#include <pcl/point_types.h>
+#include <pcl/filters/statistical_outlier_removal.h>
+#include <pcl/filters/radius_outlier_removal.h>
 
-// Removing outliers using a StatisticalOutlierRemoval filter
-// http://pointclouds.org/documentation/tutorials/statistical_outlier.php#statistical-outlier-removal
+ros::Publisher pub_sor;
+ros::Publisher pub_roir;
 
-// 수정할 변수
-// setMeanK: 점의 개수
-// setStddevMulThresh: outlier 거리 정보
-
-ros::Publisher pub;
-
-void outlier_callback(const sensor_msgs::PointCloud2ConstPtr& input)
+// outlier 제거 콜백 함수
+void outlier_removal_callback(const sensor_msgs::PointCloud2ConstPtr& input)
 {
-    pcl::PCLPointCloud2* cloud_intermediate = new pcl::PCLPointCloud2;
-    pcl::PointCloud<pcl::PointXYZI> cloud;
+    // ROS PointCloud2 메시지 PCL PointCloud 형식으로 전환
+    pcl::PointCloud<pcl::PointXYZI>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZI>);
+    pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_filtered_sor(new pcl::PointCloud<pcl::PointXYZI>);
+    pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_filtered_roir(new pcl::PointCloud<pcl::PointXYZI>);
 
-    pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_filtered (new pcl::PointCloud<pcl::PointXYZI>);
+    pcl::fromROSMsg(*input, *cloud);
 
-    pcl_conversions::toPCL(*input, *cloud_intermediate); // input을 cloud에 저장
-    
-    // pointer로 옮기기
-    pcl::fromPCLPointCloud2(*cloud_intermediate, cloud);
-    pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_p = cloud.makeShared();
-
-    // 1. Statistical Outlier Removal
+    // Statistical Outlier Removal (SOR) 필터 적용
+    // 주변 이웃과 큰 차이를 보이는 점 제거거
     pcl::StatisticalOutlierRemoval<pcl::PointXYZI> sor;
-    sor.setInputCloud (cloud_p);            //입력 
-    //sor.setMeanK (80);                    //분석시 고려한 이웃 점 수
-    //sor.setStddevMulThresh (0.5);         //Outlier로 처리할 거리 정보 
-    sor.setMeanK (80);                    //분석시 고려한 이웃 점 수
-    sor.setStddevMulThresh (0.07);         //Outlier로 처리할 거리 정보 
-    sor.filter (*cloud_filtered);         // 필터 적용 
+    sor.setInputCloud(cloud);
+    sor.setMeanK(50); // 이웃한 점의 개수
+    sor.setStddevMulThresh(1.0); // outlier로 간주할 거리 기준 배수
+    sor.filter(*cloud_filtered_sor);
 
-    // // 2. Radius Outlier removal
-    // 값이 나오기는 하나 이상하게 나와서 포기 -> 나중에 성공하길 바랍니다.,..
-    // pcl::RadiusOutlierRemoval<pcl::PointXYZI> outrem;
-    // outrem.setInputCloud(cloud_p);    //입력 
-    // outrem.setRadiusSearch(0.1);    //탐색 범위 0.01
-    // outrem.setMinNeighborsInRadius (10); //최소 보유 포인트 수 10개 
-    // outrem.filter (*cloud_filtered);  // 필터 적용 
+    // SOR 필터링 결과 퍼블리싱
+    sensor_msgs::PointCloud2 output_sor;
+    pcl::toROSMsg(*cloud_filtered_sor, output_sor);
+    output_sor.header = input->header;
+    pub_sor.publish(output_sor);
 
-    pub.publish(*cloud_filtered);
+    // Radius Outlier Removal (ROIR) 필터 적용
+    // 반경 내 이웃 점의 개수를 기반으로 점 제거
+    pcl::RadiusOutlierRemoval<pcl::PointXYZI> roir;
+    roir.setInputCloud(cloud_filtered_sor); // SOR 출력 데이터를 입력으로 사용
+    roir.setRadiusSearch(0.5); // 탐색 반경 설정 
+    roir.setMinNeighborsInRadius(5); // 반경 내 최소 이웃 점의 개수 
+    roir.filter(*cloud_filtered_roir);
+
+    // ROIR 필터링 결과 퍼블리싱 
+    sensor_msgs::PointCloud2 output_roir;
+    pcl::toROSMsg(*cloud_filtered_roir, output_roir);
+    output_roir.header = input->header;
+    pub_roir.publish(output_roir);
 }
 
-int main(int argc,char** argv)
+int main(int argc, char** argv)
 {
-    ros::init(argc, argv, "lidar_outlier");
+    // ROS 노드 초기화 
+    ros::init(argc, argv, "outlier_removal");
     ros::NodeHandle nh;
 
-    ros::Subscriber sub = nh.subscribe("lidar_roi", 1, outlier_callback);
-    pub = nh.advertise<sensor_msgs::PointCloud2> ("lidar_outlier",1);
+    // ROI 필터링 이후의 포인트 클라우드 데이터 구독 
+    ros::Subscriber sub = nh.subscribe("lidar_roi", 1, outlier_removal_callback);
 
-    std::cout << "outlier complete" << std::endl;
+    pub_sor = nh.advertise<sensor_msgs::PointCloud2>("lidar_outlier_sor", 1);
+    pub_roir = nh.advertise<sensor_msgs::PointCloud2>("lidar_outlier_roir", 1);
+
+    ROS_INFO("outlier complete");
 
     ros::spin();
+
+    return 0;
 }
